@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration Form</title>
+
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            color: blue;
+            margin-top: 30px;
+        }
+
+        form {
+            width: 400px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .register {
+            background-color: blue;
+        }
+
+        .reset {
+            background-color: gray;
+        }
+
+        .buttons {
+            text-align: center;
+        }
+
+        #message {
+            text-align: center;
+            color: green;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="myForm">
+
+    <label>First Name</label>
+    <input type="text" id="firstname" required>
+
+    <label>Last Name</label>
+    <input type="text" id="lastname" required>
+
+    <label>Roll Number</label>
+    <input type="text" id="rollnumber" required>
+
+    <label>Mobile Number</label>
+    <input type="text" id="mobile" required>
+
+    <label>Email</label>
+    <input type="email" id="email" required>
+
+    <div class="buttons">
+        <button type="submit" class="register">Register</button>
+        <button type="reset" class="reset">Reset</button>
+    </div>
+
+</form>
+
+<p id="message"></p>
+
+
+<script>
+document.getElementById("myForm").onsubmit = function(event)
+{
+    event.preventDefault();
+
+    let fname = document.getElementById("firstname").value;
+    let lname = document.getElementById("lastname").value;
+    let phone = document.getElementById("mobile").value;
+
+    // First name validation
+    if(!/^[A-Za-z]+$/.test(fname))
+    {
+        alert("First Name should contain only characters");
+        return;
+    }
+
+    // Last name validation
+    if(!/^[A-Za-z]+$/.test(lname))
+    {
+        alert("Last Name should contain only characters");
+        return;
+    }
+
+    // Phone validation
+    if(phone.length != 10 || isNaN(phone))
+    {
+        alert("Phone number should contain exactly 10 digits");
+        return;
+    }
+
+    document.getElementById("message").innerHTML =
+    "Thank You for Registering!";
+
+    document.getElementById("myForm").reset();
+}
+</script>
+
+</body>
+</html>
